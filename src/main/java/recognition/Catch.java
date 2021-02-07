@@ -42,7 +42,7 @@ public class Catch {
 		while ((capturedFrame = camera1.grab()) != null) {
 			colorImage = convertMat.convert(capturedFrame);
 			Mat grayImage = new Mat();
-			opencv_imgproc.cvtColor(colorImage, grayImage, 1); // convert image to gray for better detection
+			opencv_imgproc.cvtColor(colorImage, grayImage, opencv_imgproc.COLOR_BGRA2GRAY); // convert image to gray for better detection
 			RectVector detectedFaces = new RectVector(); // store detected faces
 			faceDetector.detectMultiScale(grayImage, detectedFaces, 1.1, 1, 0, new Size(150, 150), new Size(500, 500));
 			if (keyboardKey == null) {
