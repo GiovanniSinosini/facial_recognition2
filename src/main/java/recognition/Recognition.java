@@ -1,7 +1,7 @@
 package recognition;
 
 import static org.bytedeco.javacpp.opencv_face.createEigenFaceRecognizer;
-
+import static org.bytedeco.javacpp.opencv_face.createFisherFaceRecognizer;
 
 import org.bytedeco.javacpp.DoublePointer;
 import org.bytedeco.javacpp.IntPointer;
@@ -30,11 +30,15 @@ public class Recognition {
 
 		CascadeClassifier faceDetector = new CascadeClassifier("src\\main\\java\\resources\\haarcascade_frontalface_alt.xml");
 		
-		FaceRecognizer recognizer = createEigenFaceRecognizer();  // classifier
-		recognizer.load("src\\main\\java\\resources\\classifierEigenFaces.yml");
-		CanvasFrame cFrame = new CanvasFrame("Recognition", CanvasFrame.getDefaultGamma() / camera1.getGamma()); // drawing
-																												// a
-																												// window
+		//FaceRecognizer recognizer = createEigenFaceRecognizer();  // classifier
+		//recognizer.load("src\\main\\java\\resources\\classifierEigenFaces.yml");
+		// recognizer.setThreshold(8000);      // trust number  
+		
+		FaceRecognizer recognizer = createFisherFaceRecognizer();
+		recognizer.load("src\\main\\java\\resources\\classifierFisherFaces.yml");
+		
+		
+		CanvasFrame cFrame = new CanvasFrame("Recognition", CanvasFrame.getDefaultGamma() / camera1.getGamma()); // drawing a window
 		Frame capturedFrame = null; // object to the captured frame
 		Mat colorImage = new Mat(); // transfer from frame to color image for face detection
 		int sampleNumber = 30;
