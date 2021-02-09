@@ -21,7 +21,6 @@ public class Training {
 	public static void main(String[] args) {
 		File directory = new File ("src\\main\\java\\photos");
 		FilenameFilter imageFilter = new FilenameFilter() {   // filter image type
-			@Override
 			public boolean accept(File dir, String name) {
 				return name.endsWith(".jpg") || name.endsWith(".gif") || name.endsWith(".png") ;
 			}
