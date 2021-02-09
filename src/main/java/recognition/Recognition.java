@@ -2,6 +2,7 @@ package recognition;
 
 import static org.bytedeco.javacpp.opencv_face.createEigenFaceRecognizer;
 import static org.bytedeco.javacpp.opencv_face.createFisherFaceRecognizer;
+import static org.bytedeco.javacpp.opencv_face.createLBPHFaceRecognizer;
 
 import org.bytedeco.javacpp.DoublePointer;
 import org.bytedeco.javacpp.IntPointer;
@@ -34,8 +35,11 @@ public class Recognition {
 		//recognizer.load("src\\main\\java\\resources\\classifierEigenFaces.yml");
 		// recognizer.setThreshold(8000);      // trust number  
 		
-		FaceRecognizer recognizer = createFisherFaceRecognizer();
-		recognizer.load("src\\main\\java\\resources\\classifierFisherFaces.yml");
+		//FaceRecognizer recognizer = createFisherFaceRecognizer();
+		//recognizer.load("src\\main\\java\\resources\\classifierFisherFaces.yml");
+		
+		FaceRecognizer recognizer = createLBPHFaceRecognizer();
+		recognizer.load("src\\main\\java\\resources\\classifierLBPH.yml");
 		
 		
 		CanvasFrame cFrame = new CanvasFrame("Recognition", CanvasFrame.getDefaultGamma() / camera1.getGamma()); // drawing a window
