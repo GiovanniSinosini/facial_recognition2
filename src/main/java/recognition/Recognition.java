@@ -40,7 +40,7 @@ public class Recognition {
 		
 		FaceRecognizer recognizer = createLBPHFaceRecognizer();
 		recognizer.load("src\\main\\java\\resources\\classifierLBPH.yml");
-		
+		recognizer.setThreshold(65.0);
 		
 		CanvasFrame cFrame = new CanvasFrame("Recognition", CanvasFrame.getDefaultGamma() / camera1.getGamma()); // drawing a window
 		Frame capturedFrame = null; // object to the captured frame
@@ -56,7 +56,7 @@ public class Recognition {
 			faceDetector.detectMultiScale(grayImage, detectedFaces, 1.1, 1, 0, new Size(150, 150), new Size(500, 500));
 
 			for (int i = 0; i < detectedFaces.size(); i++) { // cycle detected faces vector
-				Rect faceData = detectedFaces.get(0);
+				Rect faceData = detectedFaces.get(i);
 				opencv_imgproc.rectangle(colorImage, faceData, new Scalar(0, 0, 255, 0)); // insert rectangle in color
 																							// image
 				Mat capturedface = new Mat(grayImage, faceData);

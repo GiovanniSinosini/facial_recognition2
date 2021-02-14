@@ -20,12 +20,12 @@ public class TesteYale {
         double totalConfidence = 0;
         
        // FaceRecognizer recognizer = createEigenFaceRecognizer();
-        //FaceRecognizer recognizer = createFisherFaceRecognizer();
+       // FaceRecognizer recognizer = createFisherFaceRecognizer();
         FaceRecognizer recognizer = createLBPHFaceRecognizer();
 
        // recognizer.load("src\\main\\java\\resources\\classifierEigenFacesYale.yml");
-        //recognizer.load("src\\main\\java\\resources\\classifierFisherFacesYale.yml");
-        recognizer.load("src\\main\\java\\resources\\classifierLBPHYale.yml");
+       // recognizer.load("src\\main\\java\\resources\\classifierFisherFacesYale.yml");
+        //recognizer.load("src\\main\\java\\resources\\classifierLBPHYale.yml");
 
         File directory = new File("src\\main\\java\\yalefaces\\test");
         File[] files = directory.listFiles();
@@ -38,7 +38,7 @@ public class TesteYale {
             IntPointer label = new IntPointer(1);
             DoublePointer confidence = new DoublePointer(1);
             recognizer.predict(photo, label, confidence);
-            int selection = label.get(0);
+            int selection = label.get(0);  // return result
             System.out.println(personId + " was recognized as " + selection + " - " + confidence.get(0));
             if (personId == selection) {
                 totalHits++;
